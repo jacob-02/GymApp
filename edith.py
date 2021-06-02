@@ -6,37 +6,6 @@ import sheet
 
 eel.init('web')
 
-
-@eel.expose
-def a():
-    print("Pizza")
-    sheet.write("Pizza", "Sheet1!B1:B1")
-
-
-@eel.expose
-def b():
-    print("Chapatti")
-    sheet.write("Chapatti", "Sheet1!B1:B1")
-
-
-@eel.expose
-def c():
-    print("Roti")
-    sheet.write("Roti", "Sheet1!B1:B1")
-
-
-@eel.expose
-def d():
-    print("Burger")
-    sheet.write("Burger", "Sheet1!B1:B1")
-
-
-@eel.expose
-def e():
-    print("Activate")
-    os.system("python3 Face.py")
-
-
 @eel.expose
 def reg(data):
     print(data)
