@@ -2,7 +2,6 @@ import eel
 import os
 import sys
 import click_img
-import sheet
 
 eel.init('web')
 
