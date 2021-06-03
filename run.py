@@ -1,7 +1,4 @@
 import eel
-import os
-import sys
-import click_img
 
 eel.init('web')
 
