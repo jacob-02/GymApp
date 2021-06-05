@@ -2,6 +2,7 @@ import mediapipe as mp
 import cv2
 import time
 
+
 class PoseDetector:
     def __init__(self, mode=False, max_pose=2, detectionCon=0.5, trackCon=0.5):
         self.mode = mode
@@ -9,7 +10,8 @@ class PoseDetector:
         self.trackCon = trackCon
         self.detectionCon = detectionCon
         self.mpPose = mp.solutions.pose
-        self.pose = self.mpPose.Pose(self.mode, self.max_pose, self.detectionCon, self.trackCon)
+        self.pose = self.mpPose.Pose(
+            self.mode, self.max_pose, self.detectionCon, self.trackCon)
         self.mpDraw = mp.solutions.drawing_utils
         self.detectedPose = False
 
@@ -18,11 +20,12 @@ class PoseDetector:
         self.results = self.pose.process(image)
 
         if self.results.pose_landmarks:
-                if draw:
-                    self.mpDraw.draw_landmarks(frame, self.results.pose_landmarks, self.mpPose.POSE_CONNECTIONS,
-                                               self.mpDraw.DrawingSpec(color=(0, 0, 0), thickness=2, circle_radius=2),
-                                               self.mpDraw.DrawingSpec(color=(155, 155, 155), thickness=2,
-                                                                       circle_radius=2))
+            if draw:
+                self.mpDraw.draw_landmarks(frame, self.results.pose_landmarks, self.mpPose.POSE_CONNECTIONS,
+                                           self.mpDraw.DrawingSpec(
+                                               color=(0, 0, 0), thickness=2, circle_radius=2),
+                                           self.mpDraw.DrawingSpec(color=(155, 155, 155), thickness=2,
+                                                                   circle_radius=2))
         return frame
 
     def findPosition(self, frame, poseNo=0, draw=True):
