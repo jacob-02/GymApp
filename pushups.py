@@ -2,7 +2,7 @@ import cv2
 from landmark import PoseModule
 import time
 
-wCam, hCam = 700, 500
+wCam, hCam = 1000, 700
 
 capture = cv2.VideoCapture(0)
 capture.set(3, wCam)
