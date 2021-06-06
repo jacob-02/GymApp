@@ -20,8 +20,8 @@ while True:
     frame = detector.findPose(frame)
 
     lm = detector.findPosition(frame, draw=False)
-    
-    print(lm[0])
+
+    cv2.circle(frame, (lm[0][1], lm[0][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)
