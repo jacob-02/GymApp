@@ -20,6 +20,8 @@ while True:
     frame = detector.findPose(frame)
 
     lm = detector.findPosition(frame, draw=False)
+    
+    print(lm[0])
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)
