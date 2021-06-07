@@ -1,0 +1,5 @@
+mediapipe
+opencv_contrib_python
+Eel
+google_api_python_client
+protobuf
