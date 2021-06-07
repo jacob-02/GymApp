@@ -2,15 +2,13 @@ import cv2
 from landmark import PoseModule
 import time
 
-wCam, hCam = 1000, 700
+wCam, hCam = 500, 370
 
-capture = cv2.VideoCapture(0)
+capture = cv2.VideoCapture(1)
 capture.set(3, wCam)
 capture.set(4, hCam)
 pTime = 0
-volume = 20.0
-volumeList = []
-muter = 20.0
+alpha, beta = 0.0, 0.0
 
 detector = PoseModule.PoseDetector(detectionCon=0.8)
 
@@ -21,12 +19,28 @@ while True:
 
     lm = detector.findPosition(frame, draw=False)
 
-    cv2.circle(frame, (lm[12][1], lm[12][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
-    cv2.circle(frame, (lm[11][1], lm[11][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
-    cv2.circle(frame, (lm[14][1], lm[14][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
-    cv2.circle(frame, (lm[16][1], lm[16][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
-    cv2.circle(frame, (lm[13][1], lm[13][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
-    cv2.circle(frame, (lm[15][1], lm[15][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
+    if(lm):
+        cv2.circle(frame, (lm[12][1], lm[12][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
+        cv2.circle(frame, (lm[11][1], lm[11][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
+        cv2.circle(frame, (lm[14][1], lm[14][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
+        cv2.circle(frame, (lm[13][1], lm[13][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
+
+        x1, y1 = (lm[12][1], lm[12][2])
+        x2, y2 = (lm[11][1], lm[11][2])
+        x3, y3 = (lm[14][1], lm[14][2])
+        x4, y4 = (lm[13][1], lm[13][2])
+
+        if (x1 - x3) | (x2 - x1) | (x4 - x2):
+            m1 = (y1 - y3) / (x1 - x3)
+            m = (y2 - y1) / (x2 - x1)
+            m2 = (y4 - y2) / (x4 - x2)
+
+        if (1 + m * m1) != 0.0 or (1 + m * m2) != 0.0:
+            alpha = (m1 - m) / (1 + m * m1)
+            beta = (m2 - m) / (1 + m * m2)
+
+            print(alpha, beta)
+
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)
