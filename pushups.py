@@ -21,7 +21,12 @@ while True:
 
     lm = detector.findPosition(frame, draw=False)
 
-    cv2.circle(frame, (lm[0][1], lm[0][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
+    cv2.circle(frame, (lm[12][1], lm[12][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
+    cv2.circle(frame, (lm[11][1], lm[11][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
+    cv2.circle(frame, (lm[14][1], lm[14][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
+    cv2.circle(frame, (lm[16][1], lm[16][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
+    cv2.circle(frame, (lm[13][1], lm[13][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
+    cv2.circle(frame, (lm[15][1], lm[15][2]), 7, color=(0, 255, 0), thickness=cv2.FILLED)
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)
