@@ -3,7 +3,7 @@ from landmark import PoseModule
 import time
 
 
-def pushups(n = 0):
+def pushups(n = 1):
     wCam, hCam = 500, 370
 
     capture = cv2.VideoCapture(n)
