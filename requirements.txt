@@ -1,5 +1,5 @@
-mediapipe
-opencv_contrib_python
-Eel
-google_api_python_client
-protobuf
+mediapipe==0.8.4.2
+Eel==0.14.0
+opencv_contrib_python==4.5.2.52
+google_api_python_client==2.7.0
+protobuf==3.17.2
