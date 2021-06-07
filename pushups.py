@@ -3,7 +3,7 @@ from landmark import PoseModule
 import time
 
 
-def pushups(n = 1):
+def pushups(n = 0):
     wCam, hCam = 500, 370
 
     capture = cv2.VideoCapture(n)
@@ -53,4 +53,4 @@ def pushups(n = 1):
     capture.release()
     cv2.destroyAllWindows()
 
-pushups(0)
+pushups()
