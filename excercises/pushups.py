@@ -26,6 +26,11 @@ def pushups(n = 0):
             x3, y3 = (lm[14][1], lm[14][2])
             x4, y4 = (lm[13][1], lm[13][2])
 
+            cv2.circle(frame, (x1, y1), 7, (0, 255, 0), cv2.FILLED)
+            cv2.circle(frame, (x2, y2), 7, (0, 255, 0), cv2.FILLED)
+            cv2.circle(frame, (x3, y3), 7, (0, 255, 0), cv2.FILLED)
+            cv2.circle(frame, (x4, y4), 7, (0, 255, 0), cv2.FILLED)
+
             if (x1 - x3) != 0 | (x2 - x1) != 0 | (x4 - x2) != 0:
                 m1 = (y1 - y3) / (x1 - x3)
                 m = (y2 - y1) / (x2 - x1)
