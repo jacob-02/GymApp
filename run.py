@@ -1,5 +1,6 @@
 import eel
-import pushups
+from excercises import pushups, curls
+
 
 eel.init('web')
 
@@ -7,12 +8,13 @@ eel.init('web')
 @eel.expose
 def regPush(data_pushups):
     print("Number of pushups to be done is : ", data_pushups)
-    pushups.pushups(0)
+    pushups.pushups(1)
 
 
 @eel.expose
 def regCurl(data_curls):
     print("Number of curls to be done is : ", data_curls)
+    curls.curls(1)
 
 
 @eel.expose
