@@ -52,5 +52,3 @@ def pushups(n = 0):
 
     capture.release()
     cv2.destroyAllWindows()
-
-# pushups()
