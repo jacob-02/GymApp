@@ -3,7 +3,7 @@ from landmark import PoseModule
 import time
 
 
-def curls(n = 0):
+def situps(n = 0):
     wCam, hCam = 500, 370
 
     capture = cv2.VideoCapture(n)
@@ -27,11 +27,8 @@ def curls(n = 0):
             x4, y4 = (lm[25][1], lm[25][2])
 
             cv2.circle(frame, (x1, y1), 7, (0, 255, 0), cv2.FILLED)
-
             cv2.circle(frame, (x2, y2), 7, (0, 255, 0), cv2.FILLED)
-
             cv2.circle(frame, (x3, y3), 7, (0, 255, 0), cv2.FILLED)
-
             cv2.circle(frame, (x4, y4), 7, (0, 255, 0), cv2.FILLED)
 
             if (x1 - x3) != 0.0:
@@ -64,5 +61,3 @@ def curls(n = 0):
 
     capture.release()
     cv2.destroyAllWindows()
-
-curls(1)
