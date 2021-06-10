@@ -69,5 +69,4 @@ def curls(n = 0):
 
     capture.release()
     cv2.destroyAllWindows()
-
-curls()
+    
