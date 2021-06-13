@@ -8,7 +8,7 @@ eel.init('web')
 @eel.expose
 def regPush(data_pushups):
     print("Number of pushups to be done is : ", data_pushups)
-    pushups.pushups(0)
+    pushups.pushups('/home/jacob/Documents/Learning/GymApp/Pushups.mpg')
 
 
 @eel.expose

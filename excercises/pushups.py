@@ -4,7 +4,7 @@ import time
 
 
 def pushups(n=0):
-    wCam, hCam = 500, 370
+    wCam, hCam = 700, 570
 
     capture = cv2.VideoCapture(n)
     capture.set(3, wCam)
@@ -53,7 +53,7 @@ def pushups(n=0):
             if(beta >= 2.3 and n == 0):
                 n = 1
                 count += 1
-                
+
             cv2.putText(frame, str(count), (250, 150), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                         fontScale=5, color=(0, 255, 0), thickness=2)
 
