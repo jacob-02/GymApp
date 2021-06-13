@@ -17,6 +17,12 @@ def situps(n = 0):
 
     while True:
         ret, frame = capture.read()
+        
+        if not ret:
+            capture.release()
+            cv2.destroyAllWindows()
+            break
+
         frame = cv2.flip(frame, 1)
         frame = detector.findPose(frame)
 
@@ -35,8 +41,6 @@ def situps(n = 0):
 
             l1 = math.hypot((y1 - y3), (x1 - x3))
             l2 = math.hypot((y4 - y2), (x4 - x2))
-
-            print(l1, l2)
 
             if(l2 <= 60.0):
                 n = 0

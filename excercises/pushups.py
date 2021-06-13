@@ -16,6 +16,12 @@ def pushups(n=0):
 
     while True:
         ret, frame = capture.read()
+        
+        if not ret:
+            capture.release()
+            cv2.destroyAllWindows()
+            break
+
         frame = cv2.flip(frame, 1)
         frame = detector.findPose(frame)
 
@@ -44,8 +50,6 @@ def pushups(n=0):
             if (1 + m * m1) != 0.0 or (1 + m * m2) != 0.0:
                 alpha = (m1 - m) / (1 + m * m1)
                 beta = (m2 - m) / (1 + m * m2)
-
-                print(alpha, beta)
             
             if(beta <= 0.06):
                 n = 0
@@ -67,7 +71,7 @@ def pushups(n=0):
         cv2.imshow('Webcam', frame)
 
         if cv2.waitKey(20) & 0xFF == ord('d'):
+            capture.release()
+            cv2.destroyAllWindows()
             break
-
-    capture.release()
-    cv2.destroyAllWindows()
+            
