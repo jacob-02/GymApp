@@ -14,7 +14,7 @@ def regPush(data_pushups):
 @eel.expose
 def regCurl(data_curls):
     print("Number of curls to be done is : ", data_curls)
-    curls.curls(0)
+    curls.curls('videos/curls.mp4')
 
 
 @eel.expose
