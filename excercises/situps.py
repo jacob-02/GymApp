@@ -1,6 +1,7 @@
 import cv2
 from landmark import PoseModule
 import time
+import math
 
 
 def situps(n = 0):
@@ -10,6 +11,7 @@ def situps(n = 0):
     capture.set(3, wCam)
     capture.set(4, hCam)
     pTime = 0
+    count = 0
 
     detector = PoseModule.PoseDetector(detectionCon=0.8)
 
@@ -31,20 +33,20 @@ def situps(n = 0):
             cv2.circle(frame, (x3, y3), 7, (0, 255, 0), cv2.FILLED)
             cv2.circle(frame, (x4, y4), 7, (0, 255, 0), cv2.FILLED)
 
-            if (x1 - x3) != 0.0:
-                m1 = (y1 - y3) / (x1 - x3)
+            l1 = math.hypot((y1 - y3), (x1 - x3))
+            l2 = math.hypot((y4 - y2), (x4 - x2))
 
-            if (x2 - x1) != 0.0:
-                m = (y2 - y1) / (x2 - x1)
-            
-            if (x4 - x2) != 0.0:
-                m2 = (y4 - y2) / (x4 - x2)
+            print(l1, l2)
 
-            if (1 + m * m1) != 0.0 or (1 + m * m2) != 0.0:
-                alpha = (m1 - m) / (1 + m * m1)
-                beta = (m2 - m) / (1 + m * m2)
+            if(l2 <= 60.0):
+                n = 0
 
-                print(alpha, beta)
+            if(l1 >= 80.0 and n == 0):
+                n = 1
+                count += 1
+
+            cv2.putText(frame, str(count), (250, 150), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                        fontScale=5, color=(0, 255, 0), thickness=2)
 
 
         cTime = time.time()

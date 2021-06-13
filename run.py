@@ -20,7 +20,7 @@ def regCurl(data_curls):
 @eel.expose
 def regSit(data_situps):
     print("Number of situps to be done is : ", data_situps)
-    situps.situps(0)
+    situps.situps('/home/jacob/Documents/Learning/GymApp/situps.mp4')
 
 
 eel.start('index.html', size=(1000, 600))
