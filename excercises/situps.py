@@ -45,8 +45,8 @@ def situps(n = 0):
                 n = 1
                 count += 1
 
-            cv2.putText(frame, str(count), (250, 150), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-                        fontScale=5, color=(0, 255, 0), thickness=2)
+            cv2.putText(frame, str(count), (250, 300), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                        fontScale=2, color=(0, 255, 0), thickness=2)
 
 
         cTime = time.time()
