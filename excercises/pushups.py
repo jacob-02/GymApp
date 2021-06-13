@@ -53,8 +53,9 @@ def pushups(n=0):
             if(beta >= 2.3 and n == 0):
                 n = 1
                 count += 1
-                cv2.putText(frame, str(count), (250, 150), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-                            fontScale=5, color=(0, 255, 0), thickness=2)
+                
+            cv2.putText(frame, str(count), (250, 150), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                        fontScale=5, color=(0, 255, 0), thickness=2)
 
         cTime = time.time()
         fps = 1 / (cTime - pTime)
