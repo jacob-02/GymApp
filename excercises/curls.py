@@ -63,7 +63,7 @@ def curls(n = 0):
 
         cv2.imshow('Webcam', frame)
 
-        if cv2.waitKey(20) & 0xFF == ord('d'):
+        if cv2.waitKey(0) & 0xFF == ord('d'):
             break
 
     capture.release()
