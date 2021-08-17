@@ -3,7 +3,7 @@ from landmark import PoseModule
 import time
 
 
-def pushups(n=0):
+def pushups(total, n=0):
     wCam, hCam = 700, 570
 
     capture = cv2.VideoCapture(n)
@@ -16,7 +16,7 @@ def pushups(n=0):
 
     while True:
         ret, frame = capture.read()
-        
+
         if not ret:
             capture.release()
             cv2.destroyAllWindows()
@@ -50,7 +50,7 @@ def pushups(n=0):
             if (1 + m * m1) != 0.0 or (1 + m * m2) != 0.0:
                 alpha = (m1 - m) / (1 + m * m1)
                 beta = (m2 - m) / (1 + m * m2)
-            
+
             if(beta <= 0.06):
                 n = 0
 
@@ -65,6 +65,11 @@ def pushups(n=0):
         fps = 1 / (cTime - pTime)
         pTime = cTime
 
+        if(count == total):
+            capture.release()
+            cv2.destroyAllWindows()
+            break
+
         cv2.putText(frame, str(int(fps)) + " fps", (10, 70),
                     cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 0), 3)
 
@@ -74,4 +79,3 @@ def pushups(n=0):
             capture.release()
             cv2.destroyAllWindows()
             break
-            
